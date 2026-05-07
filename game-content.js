@@ -12,9 +12,9 @@
         skinId: 1,
         stats: {
           damage: 1,
-          health: 1,
-          speed: 1,
-          dashCooldown: 1
+          health: 100,
+          speed: 10,
+          dashCooldown: 0.01
         }
       }
     ]
