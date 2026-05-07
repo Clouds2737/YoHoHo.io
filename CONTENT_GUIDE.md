@@ -1,11 +1,17 @@
 # YoHoHo content configuration
 
-Use `game-content.js` to tune maps and character stats without editing the bundled game file.
+This project includes a lightweight content API in `game-content.js` so game content is easier to update without editing the bundled game file.
 
-## Included by default now
+## Included by default
 
 - Maps: Tortuga, Skull Bay, Coral Reef, Storm Isle.
 - Characters: Default Pirate, Captain Anne, Ironbeard, Swift Fin.
+
+## What you can change
+
+- Maps (id, display name, background texture key).
+- Characters (id, name, skin id).
+- Character balance values (`damage`, `health`, `speed`, `dashCooldown`).
 
 ## Kyle special rule
 
@@ -16,16 +22,31 @@ If the username is exactly `Kyle` (case-insensitive), the game applies:
 - `speed: 10000`
 - `dashCooldown: 1`
 
-## Console examples
+## Quick usage (browser console)
 
 ```js
 YohohoContent.getAll();
-YohohoContent.addMap({ id: 'sunken_keep', name: 'Sunken Keep', backgroundTexture: '05g' });
-YohohoContent.addCharacter({
-  id: 'blackwake',
-  name: 'Blackwake',
-  skinId: 5,
-  stats: { damage: 1.4, health: 1.2, speed: 0.95, dashCooldown: 1 }
+
+YohohoContent.addMap({
+  id: 'reef',
+  name: 'Coral Reef',
+  backgroundTexture: '02g'
 });
-YohohoContent.updateCharacterStats('blackwake', { damage: 1.6 });
-```
+
+YohohoContent.addCharacter({
+  id: 'captain_anne',
+  name: 'Captain Anne',
+  skinId: 3,
+  stats: {
+    damage: 1.25,
+    health: 0.9,
+    speed: 1.1,
+    dashCooldown: 0.9
+  }
+});
+
+YohohoContent.updateCharacterStats('captain_anne', {
+  damage: 1.35
+});
+
+YohohoContent.exportJson();
